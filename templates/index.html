@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Noticias RSS</title>
+</head>
+<body>
+    <header>
+        <h1>Consulta de Noticias RSS</h1>
+        <form method="POST" class="search-form">
+            <label for="filtro-fuente">Fuente:</label>
+            <select name="filtro-fuente" id="filtro-fuente">
+                <option value="">Todas</option>
+                {% for fuente in fuentes %}
+                <option value="{{ fuente }}">{{ fuente }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="filtro-ambito">Ámbito Geográfico:</label>
+            <select name="filtro-ambito" id="filtro-ambito">
+                <option value="">Todos</option>
+                {% for ambito in ambitos %}
+                <option value="{{ ambito }}">{{ ambito }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="filtro-agente">Tipo de Agente:</label>
+            <select name="filtro-agente" id="filtro-agente">
+                <option value="">Todos</option>
+                {% for agente in agentes %}
+                <option value="{{ agente }}">{{ agente }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="filtro-materia">Materia:</label>
+            <select name="filtro-materia" id="filtro-materia">
+                <option value="">Todas</option>
+                {% for materia in materias %}
+                <option value="{{ materia }}">{{ materia }}</option>
+                {% endfor %}
+            </select>
+
+            <button type="submit">Buscar</button>
+        </form>
+    </header>
+
+    <main id="noticias-container">
+        {% if noticias %}
+            {% for noticia in noticias %}
+            <div class="noticia">
+                <h2>{{ noticia.titulo }}</h2>
+                <p><strong>Fecha de Publicación:</strong> {{ noticia.fecha_publicacion }}</p>
+                {% if noticia.fuente %}
+                    <p><strong>Fuente:</strong> {{ noticia.fuente }}</p>
+                {% endif %}
+                {% if noticia.ambito %}
+                    <p><strong>Ámbito Geográfico:</strong> {{ noticia.ambito }}</p>
+                {% endif %}
+                {% if noticia.agente %}
+                    <p><strong>Tipo de Agente:</strong> {{ noticia.agente }}</p>
+                {% endif %}
+                {% if noticia.materia %}
+                    <p><strong>Materia:</strong> {{ noticia.materia }}</p>
+                {% endif %}
+                <a class="button" href="{{ noticia.url }}" target="_blank">Ver noticia completa</a>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p>No se encontraron noticias.</p>
+        {% endif %}
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Consulta de Noticias RSS</p>
+    </footer>
+</body>
+</html>
