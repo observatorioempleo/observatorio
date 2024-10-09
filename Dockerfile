@@ -14,6 +14,7 @@ COPY . .
 EXPOSE 8000
 
 # Establecer la variable de entorno para indicar que la aplicación Flask está en modo desarrollo
+ENV FLASK_APP=app.py
 ENV FLASK_ENV=development
 
 # Comando para correr la aplicación
