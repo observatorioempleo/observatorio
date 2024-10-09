@@ -1,24 +1,33 @@
-# Establecer el directorio de trabajo en /app
-WORKDIR /observatorioempleo/observatorio
+# Etapa 1: Construcción de la imagen base con las dependencias necesarias
+FROM python:3.9-slim AS build
 
-# Copiar el archivo de requerimientos para instalar dependencias
-COPY requirements.txt
+# Establecer el directorio de trabajo
+WORKDIR /app
 
-# Instalar las dependencias necesarias
+# Copiar los archivos necesarios
+COPY requirements.txt requirements.txt
+
+# Instalar las dependencias de Python
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copiar el código fuente del proyecto a la imagen Docker
+# Etapa 2: Imagen final, copiado del código fuente
+FROM python:3.9-slim
+
+# Establecer el directorio de trabajo
+WORKDIR /observatorioempleo
+
+# Copiar las dependencias instaladas de la etapa build
+COPY --from=build /usr/local/lib/python3.9/site-packages /usr/local/lib/python3.9/site-packages
+
+# Copiar el código fuente al contenedor
 COPY . .
 
-# Exponer el puerto en el que Flask va a correr (por defecto es el 5000)
-EXPOSE 8000
+# Exponer el puerto 5000
+EXPOSE 5000
 
-# Establecer la variable de entorno para indicar que la aplicación Flask está en modo desarrollo
+# Establecer la variable de entorno para que Flask use el archivo app.py
 ENV FLASK_APP=app.py
 ENV FLASK_ENV=development
 
-# Comando para correr la aplicación
-CMD ["flask", "run", "--host=0.0.0.0"]
-
-# Define the entry point for the container
+# Ejecutar la aplicación Flask
 CMD ["flask", "run", "--host=0.0.0.0"]
