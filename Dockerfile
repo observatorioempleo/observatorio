@@ -2,7 +2,7 @@
 FROM python:3.9-slim
 
 # Establecer el directorio de trabajo en /app
-WORKDIR /app
+WORKDIR /observatorioemprego
 
 # Copiar el archivo de requerimientos para instalar dependencias
 COPY requirements.txt requirements.txt
