@@ -4,7 +4,7 @@ from flask import Flask, render_template, request
 from datetime import datetime
 import os
 
-port = int(os.environ.get("PORT", 8080))  # Por defecto en 8080
+port = int(os.environ.get("PORT", 5000))  # Por defecto en 5000
 app.run(host="0.0.0.0", port=port)
 
 
@@ -82,5 +82,5 @@ def index():
     return render_template('index.html', noticias=noticias, fuentes=fuentes, ambitos=ambitos, agentes=agentes, materias=materias)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8080)
+    app.run(host='0.0.0.0', port=5000)
 
