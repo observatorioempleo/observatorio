@@ -2,10 +2,21 @@ import pandas as pd
 import feedparser
 from flask import Flask, render_template, request
 from datetime import datetime
+from urllib.parse import quote
+# Usar quote en lugar de url_quote
+quoted_url = quote(url)
+
+# Reemplaza url_quote con quote
+quoted_url = quote(url)
+
 import os
 
-port = int(os.environ.get("PORT", 8080))  # Por defecto en 5000
-app.run(host="0.0.0.0", port=port)
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)  # Asegúrate de que esté escuchando en el puerto 5000
+
+#port = int(os.environ.get("PORT", 5000))  # Por defecto en 8080
+#app.run(host="0.0.0.0", port=5000)
+
 
 # Leer el archivo CSV con pandas
 df = pd.read_csv('02_FUENTES_COMPLETAS.csv', delimiter=';')
@@ -63,8 +74,6 @@ def index():
         filtro_ambito = request.form.get('filtro-ambito')
         filtro_agente = request.form.get('filtro-agente')
         filtro_materia = request.form.get('filtro-materia')
-        filtro_mes = request.form.get('filtro-mes')
-        filtro_anio = request.form.get('filtro-anio')
 
         # Filtrar las noticias según los criterios de búsqueda
         if filtro_fuente:
@@ -75,11 +84,9 @@ def index():
             noticias = [n for n in noticias if filtro_agente in n['agente']]
         if filtro_materia:
             noticias = [n for n in noticias if filtro_materia in n['materia']]
-        if filtro_mes and filtro_anio:
-            noticias = [n for n in noticias if filtro_mes in n['fecha_publicacion'] and filtro_anio in n['fecha_publicacion']]
 
     return render_template('index.html', noticias=noticias, fuentes=fuentes, ambitos=ambitos, agentes=agentes, materias=materias)
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8080)
-
+# El puerto 5000 debe coincidir
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)
