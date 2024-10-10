@@ -2,6 +2,11 @@ import pandas as pd
 import feedparser
 from flask import Flask, render_template, request
 from datetime import datetime
+import os
+
+port = int(os.environ.get("PORT", 8080))  # Por defecto en 8080
+app.run(host="0.0.0.0", port=port)
+
 
 # Leer el archivo CSV con pandas
 df = pd.read_csv('02_FUENTES_COMPLETAS.csv', delimiter=';')
