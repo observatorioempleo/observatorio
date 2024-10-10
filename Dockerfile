@@ -5,7 +5,7 @@ FROM python:3.8
 WORKDIR /observatorioempleo
 
 # Expone el puerto 8080 para el contenedor
-EXPOSE 8000
+EXPOSE 8080
 
 # Copy the application files into the working directory
 COPY . /observatorioempleo
@@ -14,4 +14,4 @@ COPY . /observatorioempleo
 RUN pip install -r requirements.txt
 
 # Define the entry point for the container
-CMD ["flask", "run", "--host=0.0.0.0", "--port=8000"] 
+CMD ["flask", "run", "--host=0.0.0.0", "--port=8080"] 
