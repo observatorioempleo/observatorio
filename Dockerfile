@@ -5,7 +5,7 @@ FROM python:3.8
 WORKDIR /observatorioempleo
 
 # Expone el puerto 8080 para el contenedor
-EXPOSE 5000
+EXPOSE 8080
 
 # Copy the application files into the working directory
 COPY . /observatorioempleo
