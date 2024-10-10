@@ -3,9 +3,12 @@ import feedparser
 from flask import Flask, render_template, request
 from datetime import datetime
 from urllib.parse import quote
-import Werkzeug
+# Usar quote en lugar de url_quote
+quoted_url = quote(url)
+
 # Reemplaza url_quote con quote
 quoted_url = quote(url)
+
 import os
 
 port = int(os.environ.get("PORT", 8080))  # Por defecto en 8080
