@@ -3,6 +3,11 @@ import feedparser
 from flask import Flask, render_template, request
 from datetime import datetime
 from urllib.parse import quote
+from app import app  # Ajusta esta línea según tu estructura de archivos
+
+if __name__ == "__main__":
+    app.run()
+
 # Usar quote en lugar de url_quote
 quoted_url = quote(url)
 
@@ -10,7 +15,7 @@ quoted_url = quote(url)
 quoted_url = quote(url)
 
 import os
-port = int(os.environ.get('PORT', 5000))  # Usa el puerto que Back4App proporciona
+port = int(os.environ.get('PORT', 8080))  # Usa el puerto que Back4App proporciona
 app.run(host="0.0.0.0", port=port)
 
 # Leer el archivo CSV con pandas
@@ -84,4 +89,4 @@ def index():
 
 # El puerto 5000 debe coincidir
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    app.run(host="0.0.0.0", port=8080)
