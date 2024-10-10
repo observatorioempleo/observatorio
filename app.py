@@ -5,8 +5,8 @@ from datetime import datetime
 
 import os
 
-port = int(os.environ.get("PORT", 8080))  # Por defecto en 8080
-app.run(host="0.0.0.0", port=port)
+port = int(os.environ.get("PORT", 5000))  # Por defecto en 5000
+app.run(host="0.0.0.0", port=5000)
 
 
 # Leer el archivo CSV con pandas
@@ -80,4 +80,4 @@ def index():
 
 # El puerto 5000 debe coincidir
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8080)
+    app.run(host="0.0.0.0", port=5000)
