@@ -10,16 +10,8 @@ quoted_url = quote(url)
 quoted_url = quote(url)
 
 import os
-
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)  # Asegúrate de que esté escuchando en el puerto 5000
-
-#port = int(os.environ.get("PORT", 5000))  # Por defecto en 8000
-#app.run(host="0.0.0.0", port=5000)
-
-port = int(os.environ.get('PORT', 5000))
+port = int(os.environ.get('PORT', 5000))  # Usa el puerto que Back4App proporciona
 app.run(host="0.0.0.0", port=port)
-
 
 # Leer el archivo CSV con pandas
 df = pd.read_csv('02_FUENTES_COMPLETAS.csv', delimiter=';')
