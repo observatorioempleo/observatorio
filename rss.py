@@ -12,10 +12,10 @@ quoted_url = quote(url)
 import os
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)  # Asegúrate de que esté escuchando en el puerto 5000
+    app.run(host="0.0.0.0", port=8000)  # Asegúrate de que esté escuchando en el puerto 5000
 
 #port = int(os.environ.get("PORT", 5000))  # Por defecto en 8080
-#app.run(host="0.0.0.0", port=5000)
+#app.run(host="0.0.0.0", port=8000)
 
 
 # Leer el archivo CSV con pandas
@@ -89,4 +89,4 @@ def index():
 
 # El puerto 5000 debe coincidir
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    app.run(host="0.0.0.0", port=8000)
