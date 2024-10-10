@@ -7,7 +7,6 @@ import os
 port = int(os.environ.get("PORT", 5000))  # Por defecto en 5000
 app.run(host="0.0.0.0", port=port)
 
-
 # Leer el archivo CSV con pandas
 df = pd.read_csv('02_FUENTES_COMPLETAS.csv', delimiter=';')
 
