@@ -5,7 +5,7 @@ FROM python:3.8
 WORKDIR /observatorioempleo
 
 # Copy the application files into the working directory
-COPY . /oservatorioempleo
+COPY . /observatorioempleo
 
 # Install the application dependencies
 RUN pip install -r requirements.txt
